@@ -105,6 +105,8 @@ expressApp.use('/v1', async (req, res, next) => {
       'Access-Control-Allow-Credentials': true,
     });
   }
+
+  // Add authentication stuff
 });
 
 @App.Server()

@@ -24,9 +24,11 @@ module.exports = {
   rules: {
     "no-console": 0,
     "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/ban-types": 0,
     "@typescript-eslint/no-empty-function": 0,
-    "@typescript-eslint/no-explicity-any": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 1,
     "indent": [
       "error",
       2,
