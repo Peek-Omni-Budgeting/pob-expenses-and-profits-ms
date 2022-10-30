@@ -43,6 +43,7 @@ export class Application_ {
 
     try {
       console.info('Starting servers');
+      console.log(this.serverManager.getServers());
       await this.serverManager.callStart();
       console.log('started');
     } catch (err: any) {

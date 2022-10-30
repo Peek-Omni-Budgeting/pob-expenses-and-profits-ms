@@ -6,6 +6,10 @@ import { createServer } from 'http';
 import v8 from 'v8';
 import * as uuid from 'uuid';
 
+import { Core } from '@Frameworks';
+// @ts-ignore
+const { App } = Core;
+
 const formatMemoryUsage = (data: any) => `${ Math.round(data / 1024 / 1024 * 100) / 100 } MB`;
 const memoryData = process.memoryUsage();
 const nodeJsStats = v8.getHeapStatistics();
@@ -103,6 +107,7 @@ expressApp.use('/v1', async (req, res, next) => {
   }
 });
 
+@App.Server()
 export class Http {
   app: any;
 
@@ -114,7 +119,7 @@ export class Http {
     expressApp.use('v1', router);
   }
 
-  public listen () {
+  listen () {
     return new Promise((resolve, reject) => {
       this.app?.listen(this.options.port, (e: any) => {
         if (e) {

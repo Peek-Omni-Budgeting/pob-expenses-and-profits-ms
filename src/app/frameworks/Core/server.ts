@@ -25,6 +25,7 @@ export class ServerManager extends ResourceManager {
 
   callStart() {
     return Promise.all(Object.keys(this.connections).map((con) => {
+      console.log(this.connections[con]);
       return this.connections[con].listen();
     }));
   };
