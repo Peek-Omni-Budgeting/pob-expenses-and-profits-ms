@@ -1,12 +1,12 @@
-import express from 'express';
-import config from 'config';
-import Cors from 'cors';
-import helmet from 'helmet';
+import express          from 'express';
+import config           from 'config';
+import Cors             from 'cors';
+import helmet           from 'helmet';
 import { createServer } from 'http';
-import v8 from 'v8';
-import * as uuid from 'uuid';
+import v8               from 'v8';
+import * as uuid        from 'uuid';
 
-import { Core } from '@Frameworks';
+import { Core }         from '@Frameworks';
 // @ts-ignore
 const { App } = Core;
 
@@ -129,7 +129,7 @@ export class Http {
         resolve(true);
       });
     });
-  };
+  }
 
   public async close () {
     try {
@@ -144,4 +144,4 @@ export class Http {
       return 'Http Errored Closing';
     }
   }
-};
+}

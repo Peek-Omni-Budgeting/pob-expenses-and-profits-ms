@@ -9,15 +9,15 @@ export class ResourceManager {
       this.connections[ctorName] = Reflect.construct(this.resources[ctorName], []);
       return this.connections[ctorName].init();
     })]);
-  };
+  }
 
   protected getConnections() {
     return this.connections;
   }
 
-  callStart() {};
+  callStart() {}
 
-  callStop() {};
+  callStop() {}
 
   MakeResourceDecorator() {
     return function DataSource(ctor: any) {

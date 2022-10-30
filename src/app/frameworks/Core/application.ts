@@ -1,4 +1,4 @@
-import * as uuid from 'uuid';
+import * as uuid              from 'uuid';
 import { Api, ServerManager } from './server';
 
 export interface ApplicationOptions {

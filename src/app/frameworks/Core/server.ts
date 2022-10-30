@@ -21,33 +21,33 @@ export class ServerManager extends ResourceManager {
     return new Promise(reject => {
       setTimeout(reject, t, `${ name } Timeout on Close`);
     });
-  };
+  }
 
   callStart() {
     return Promise.all(Object.keys(this.connections).map((con) => {
       return this.connections[con].listen();
     }));
-  };
+  }
 
   callStop() {
     return Promise.all(Object.keys(this.connections).map((con) => {
       const Timeout: number = this.connections[con]._closeTimeout ? this.connections[con]._closeTimeout : 5000;
       return Promise.race([this.connections[con].close(), this.createTimeoutRejection(Timeout, con)]);
     }));
-  };
+  }
 
   getServer(name: string | { name: string }) {
     if (typeof name === 'string') {
       return this.connections[name];
     }
     return this.connections[name.name];
-  };
+  }
 
   getServers(extended = false) {
     if (extended) return this.connections;
 
     return Object.keys(this.connections);
-  };
+  }
 
   MakeResourceDecorator(): (ctor: any) => any {
     const soup = super.MakeResourceDecorator();
@@ -56,7 +56,7 @@ export class ServerManager extends ResourceManager {
       return soup(ctor);
     }.bind(this);
   }
-};
+}
 
 export function Api(ctor: any) {
   return function ApiInner(srvCtor: any) {
