@@ -1,6 +1,8 @@
 const DEFAULT_API_PORT = 44361;
 require('dotenv').config();
 
+const ENV = process.env;
+
 const config = module.exports = {
   envName: ENV.ENV_NAME,
   server1: {
