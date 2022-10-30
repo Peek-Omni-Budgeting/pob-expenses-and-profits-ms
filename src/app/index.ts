@@ -1,4 +1,5 @@
 import { Core } from '@Frameworks';
+import './servers';
 
 // @ts-ignore
 export const { App } = Core;
