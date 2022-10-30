@@ -2,6 +2,7 @@ import express from 'express';
 import config from 'config';
 import Cors from 'cors';
 import helmet from 'helmet';
+import { createServer } from 'http';
 import v8 from 'v8';
 import * as uuid from 'uuid';
 
@@ -101,3 +102,41 @@ expressApp.use('/v1', async (req, res, next) => {
     });
   }
 });
+
+export class Http {
+  app: any;
+
+  constructor(protected options = { port: config.get('server1.port') }) {}
+
+  init () {
+    this.app = createServer(expressApp);
+    // attach routers
+    expressApp.use('v1', router);
+  }
+
+  public listen () {
+    return new Promise((resolve, reject) => {
+      this.app?.listen(this.options.port, (e: any) => {
+        if (e) {
+          reject(e);
+        }
+        console.log(`running on ${ this.options.port }`);
+        resolve(true);
+      });
+    });
+  };
+
+  public async close () {
+    try {
+      console.info('Closing server: Http');
+
+      // Add anything like socket io connections or thread/pools that need to close in future
+
+      console.info('Server Closed: Http');
+      return 'Http succesfully closed';
+    } catch (err: any) {
+      console.error('Error closing Server: Http', err);
+      return 'Http Errored Closing';
+    }
+  }
+};
